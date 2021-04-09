@@ -1,3 +1,38 @@
+.clear-night {
+    background: url(../dist/images/clear-night-sky.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.clear-day {
+    background: url(../dist/images/clear-day.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.partly-cloudy {
+    background: url(../dist/images/partly-cloudy-day.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.overcast-day {
+    background: url(../dist/images/overcast-day.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.overcast-night {
+    background: url(../dist/images/clouds-night.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: raleway;
 }
@@ -11,8 +46,27 @@ body {
     justify-content: flex-end;
 }
 
+#search-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    background-color: rgb(233, 233, 233);
+}
+
+
+
 #city-search {
     width: 12rem;
+    padding: 0;
+    height: 100%;
+    border: none;
+    background-color: rgb(233, 233, 233);
+}
+
+#search-button {
+    width: 3rem;
+    text-align: center;
 }
 
 #main-weather {
@@ -24,6 +78,7 @@ body {
 
 #weather-description {
     font-size: 2rem;
+    text-transform: capitalize;
 }
 
 #city-title {
@@ -32,6 +87,8 @@ body {
 
 #temperature {
     font-size: 6rem; 
+    width: 10rem;
+    text-align: center;
 }
 
 #weather-bottom {
@@ -39,7 +96,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 23rem;
+    width: 24rem;
 }
 
 #extras {

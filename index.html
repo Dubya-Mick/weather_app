@@ -7,20 +7,24 @@
     <title>Weather King</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div id="nav">
-        <input type="text" name="city" id="city-search">
+        <div id="search-wrapper">
+            <input type="text" name="city" id="city-search">
+            <div id="search-button"><i class="material-icons">search</i></div>
+        </div>
     </div>
     <div id="main-weather">        
-        <div id="weather-description">Clear Sky</div>
-        <div id="city-title">London</div>
+        <div id="weather-description"></div>
+        <div id="city-title"></div>
         <div id="weather-bottom">
-            <div id="temperature">29&#176</div>
+            <div id="temperature"></div>
             <div id="extras">
-                <div class="tid-bits">Feels like: 232</div>
-                <div class="tid-bits">Wind: 1323</div>
-                <div class="tid-bits">Precipitation: 123</div>
+                <div id="feels-like" class="tid-bits"></div>
+                <div id="wind" class="tid-bits"></div>
+                <div id="precip-chance" class="tid-bits"></div>
             </div>
         </div>
         
