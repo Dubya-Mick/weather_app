@@ -35,7 +35,6 @@ const weatherFetcher = (() => {
             console.log(error);
 
         }
-
     }
     const processWeatherData = (data) => {
         currentCityWeatherData.tempInC = data.current.temp_c.toFixed(0);
@@ -66,24 +65,19 @@ const weatherFetcher = (() => {
         const partlyCloudyRegex = /partly/gi;
         const overcastRainSnowRegex = /cloudy|overcast|rain|drizzle|snow|ice|sleet|blizzard|fog/gi;
         if (currentCityWeatherData.isDay == 0 && clearRegex.test(description)) {
-            document.documentElement.className = '';
-            document.documentElement.classList.add('clear-night');
+            document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clear-night-sky.jpeg)')
             document.body.style.color = 'white';
         } else if (currentCityWeatherData == 0 && overcastRainSnowRegex.test(description)) {
-            document.documentElement.className = '';
-            document.documentElement.classList.add('overcast-night');
+            document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clouds-night.jpeg)')
             document.body.style.color = 'white';
         } else if (clearRegex.test(description)) {
-            document.documentElement.className = '';
-            document.documentElement.classList.add('clear-day');
+            document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clear-day.jpeg)')
             document.body.style.color = 'white';
         } else if (partlyCloudyRegex.test(description)) {
-            document.documentElement.className = '';
-            document.documentElement.classList.add('partly-cloudy');
+            document.documentElement.style.setProperty('--image-url', 'url(../dist/images/partly-cloudy-day.jpeg)')
             document.body.style.color = 'black';
         } else {
-            document.documentElement.className = '';
-            document.documentElement.classList.add('overcast-day');
+            document.documentElement.style.setProperty('--image-url', 'url(../dist/images/overcast-day.jpeg)')
             document.body.style.color = 'black';
         }
         
@@ -95,11 +89,12 @@ const weatherFetcher = (() => {
         }
 
         // if chance of snow is greater than/equal to 1, display chance of snow instead of rain
-        if (parseInt(currentCityWeatherData.chanceOfSnow) >= 1) {
+        if (parseInt(currentCityWeatherData.chanceOfSnow) > parseInt(currentCityWeatherData.chanceOfRain)) {
             precipChance.textContent = 'Chance of Snow: ' + currentCityWeatherData.chanceOfSnow + '%';
         } else {
             precipChance.textContent = 'Chance of Rain: ' + currentCityWeatherData.chanceOfRain + '%';
         }
+
 
     }
 

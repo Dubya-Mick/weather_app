@@ -1,33 +1,9 @@
-.clear-night {
-    background: url(../dist/images/clear-night-sky.jpeg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
+:root {
+    --image-url: url(../dist/images/clear-night-sky.jpeg);
 }
 
-.clear-day {
-    background: url(../dist/images/clear-day.jpeg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-}
-
-.partly-cloudy {
-    background: url(../dist/images/partly-cloudy-day.jpeg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-}
-
-.overcast-day {
-    background: url(../dist/images/overcast-day.jpeg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-}
-
-.overcast-night {
-    background: url(../dist/images/clouds-night.jpeg) no-repeat center center fixed;
+html {
+    background: var(--image-url) no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     overflow: hidden;
