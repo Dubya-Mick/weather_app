@@ -7,6 +7,7 @@ var __webpack_exports__ = {};
 const weatherFetcher = (() => {
 
     let currentCityWeatherData = {};
+    let farenheit = false;
     const weatherDescription = document.getElementById('weather-description');
     const feelsLike = document.getElementById('feels-like');
     const wind = document.getElementById('wind');
@@ -19,23 +20,35 @@ const weatherFetcher = (() => {
         grabWeather(chosenCity);
     }
 
+    const grabUserWeather = async () => {
+        try {
+            let rawLocationData = await fetch('https://ipapi.co/json/',
+            {mode: 'cors'}
+            );
+            let locationData = await rawLocationData.json();
+            let cityAndCountry = `${locationData.city}, ${locationData.country_name}`;
+            grabWeather(cityAndCountry);
+        } catch (error) {
+            console.log(error);
+        }
+
+
+    }
+
     const grabWeather = async (location) => {
         try {
             let rawWeatherData = await fetch(
-                `http://api.weatherapi.com/v1/forecast.json?key=ec082002a81e415bae0115044210804&q=${location}`,
+                `http://api.weatherapi.com/v1/forecast.json?key=ec082002a81e415bae0115044210804&days=7&q=${location}`,
                 {mode: 'cors'}
-            )
-
+            );
             let weatherData = await rawWeatherData.json();
-            console.log(weatherData);
             processWeatherData(weatherData);
-            console.log(currentCityWeatherData);
             displayWeather();
-        } catch (error) {
-            console.log(error);
-
+        } catch  {
+            displayErrorToast();
         }
     }
+
     const processWeatherData = (data) => {
         currentCityWeatherData.tempInC = data.current.temp_c.toFixed(0);
         currentCityWeatherData.tempInF = data.current.temp_f.toFixed(0);
@@ -94,22 +107,54 @@ const weatherFetcher = (() => {
         } else {
             precipChance.textContent = 'Chance of Rain: ' + currentCityWeatherData.chanceOfRain + '%';
         }
+    }
 
+    const toggleTempUnits = () => {
+        const f = document.getElementById('f');
+        const c = document.getElementById('c');
+        if (farenheit) {
+            temp.textContent = currentCityWeatherData.tempInC + '\u00B0';
+            feelsLike.textContent = 'Feels like: ' + currentCityWeatherData.feelsLikeC + '\u00B0';
+            f.classList.toggle('faded');
+            c.classList.toggle('faded');
+            farenheit = false;
+        } else {
+            temp.textContent = currentCityWeatherData.tempInF + '\u00B0';
+            feelsLike.textContent = 'Feels like: ' + currentCityWeatherData.feelsLikeF + '\u00B0';
+            f.classList.toggle('faded');
+            c.classList.toggle('faded');
+            farenheit = true;
+        }
+    }
 
+    const displayErrorToast = () => {
+        let toast = document.querySelector('.toast');
+        toast.textContent = 'No weather data found for this location!'
+        toast.classList.add('show-toast');
+        setTimeout(() => toast.classList.remove('show-toast'), 3000);
     }
 
     const activateSearch = () => {
         document.getElementById('search-button').addEventListener('click', searchForCity);
     }
 
+    const activateTempToggle = () => {
+        document.getElementById('unit-button').addEventListener('click', toggleTempUnits);
+    }
+
     return {
         activateSearch,
         grabWeather,
+        grabUserWeather,
+        activateTempToggle
     }
 
 })();
 weatherFetcher.activateSearch();
-weatherFetcher.grabWeather('Shanghai');
+weatherFetcher.activateTempToggle();
+weatherFetcher.grabUserWeather();
+
+
 
 /******/ })()
 ;
