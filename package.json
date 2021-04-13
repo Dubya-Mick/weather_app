@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Dubya-Mick/weather_app#readme",
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "webpack": "^5.30.0",
     "webpack-cli": "^4.6.0"
   }
