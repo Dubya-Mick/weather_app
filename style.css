@@ -114,6 +114,28 @@ body {
     
 }
 
+.spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -2.5rem;
+    margin-left: -2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.5rem solid #eee;
+    border-top-color:rgb(77, 59, 179);
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+    
+}
+
+@keyframes loading {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .toast {
     position: fixed;
     top: 0;
