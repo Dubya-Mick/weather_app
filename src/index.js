@@ -31,7 +31,7 @@ const weatherFetcher = (() => {
     try {
       loadingSpinner.style.display = 'block';
       const rawWeatherData = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=ec082002a81e415bae0115044210804&days=7&q=${location}`,
+        `https://api.weatherapi.com/v1/forecast.json?key=ec082002a81e415bae0115044210804&days=7&q=${location}`,
         { mode: 'cors' },
       );
       const weatherData = await rawWeatherData.json();
