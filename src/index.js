@@ -25,7 +25,7 @@ const weatherFetcher = (() => {
       const cityAndCountry = `${locationData.city}, ${locationData.country_name}`;
       grabWeather(cityAndCountry);
     } catch {
-      displayErrorToast('Sorry, no weather data found based on your location. Please try a city in the search bar.');
+      grabWeather('London');
     }
   };
 
