@@ -16,7 +16,9 @@ const weatherFetcher = (() => {
 
   const searchForCity = () => {
     const chosenCity = document.getElementById('city-search').value;
-    grabWeather(chosenCity);
+    if (chosenCity.length > 0) {
+      grabWeather(chosenCity);
+    }
   };
 
   const grabUserWeather = async () => {
@@ -79,19 +81,19 @@ const weatherFetcher = (() => {
     const partlyCloudyRegex = /partly/gi;
     const overcastRainSnowRegex = /cloudy|overcast|rain|drizzle|snow|ice|sleet|blizzard|fog/gi;
     if (currentCityWeatherData.isDay === 0 && clearRegex.test(description)) {
-      document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clear-night-sky.jpeg)');
+      document.documentElement.style.setProperty('--image-url', 'url(./images/clear-night-sky.jpeg)');
       document.body.style.color = 'white';
     } else if (currentCityWeatherData === 0 && overcastRainSnowRegex.test(description)) {
-      document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clouds-night.jpeg)');
+      document.documentElement.style.setProperty('--image-url', 'url(./images/clouds-night.jpeg)');
       document.body.style.color = 'white';
     } else if (clearRegex.test(description)) {
-      document.documentElement.style.setProperty('--image-url', 'url(../dist/images/clear-day.jpeg)');
+      document.documentElement.style.setProperty('--image-url', 'url(./images/clear-day.jpeg)');
       document.body.style.color = 'white';
     } else if (partlyCloudyRegex.test(description)) {
-      document.documentElement.style.setProperty('--image-url', 'url(../dist/images/partly-cloudy-day.jpeg)');
+      document.documentElement.style.setProperty('--image-url', 'url(./images/partly-cloudy-day.jpeg)');
       document.body.style.color = 'black';
     } else {
-      document.documentElement.style.setProperty('--image-url', 'url(../dist/images/overcast-day.jpeg)');
+      document.documentElement.style.setProperty('--image-url', 'url(./images/overcast-day.jpeg)');
       document.body.style.color = 'black';
     }
 
